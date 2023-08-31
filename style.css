@@ -195,6 +195,11 @@ input[type="checkbox"] {
   height: 20px;
   margin-right: 1.5rem;
   border: 2px solid var(--milky-white);
+  cursor: pointer;
+}
+
+input[type="checkbox"]:active {
+  border-color: var(--green-pale);
 }
 
 input[type="checkbox"]:checked {
