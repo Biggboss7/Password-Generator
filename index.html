@@ -35,6 +35,9 @@
         <p>Character Length</p>
         <span id="col-passwordLengthEl" class="password--length">0</span>
         <input type="range" step="1" min="0" max="20" value="0" />
+        <small id="char--lengthError" class="text--error length--error">
+          X Character Length may not zero!</small
+        >
         <div class="option--container">
           <label for="uppercase">
             <input
@@ -67,6 +70,9 @@
             />
             Include Symbols
           </label>
+          <small id="char--lengthError" class="text--error option--error">
+            X Select at least one option!
+          </small>
         </div>
         <div class="password-strength--container">
           <p class="text--uppercase text--disabled">strength</p>

@@ -46,6 +46,7 @@ label {
   --fs-large: 2rem;
   --fs-medium: 1.5rem;
   --fs-normal: 1.125rem;
+  --fs-small: 0.8rem;
 }
 
 /* Container Styling */
@@ -68,7 +69,7 @@ main {
 
 .option--container {
   display: grid;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   row-gap: 1.25rem;
 }
 
@@ -105,6 +106,32 @@ main {
 
 .text--disabled {
   color: var(--violett-pale);
+}
+
+.text--error {
+  display: none;
+  font-size: var(--fs-small);
+  color: var(--red);
+}
+
+.length--error,
+.option--error {
+  display: none;
+  position: absolute;
+  left: 75px;
+}
+
+.length--error.error,
+.option--error.error {
+  display: block;
+}
+
+.length--error {
+  top: 108px;
+}
+
+.option--error {
+  bottom: 105px;
 }
 
 .status {
@@ -179,7 +206,7 @@ input[type="range"] {
   appearance: none;
   width: 100%;
   height: 0.5rem;
-  margin: 2rem 0;
+  margin: 2rem 0 3rem;
   background-color: var(--navy-blue);
   border-radius: 16px;
 }
