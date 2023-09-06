@@ -26,3 +26,13 @@ function checkError() {
     return true;
   }
 }
+
+// Error Message Handling
+function errorMessage() {
+  if (rangeInput.value === "0") lengthErrorEl.classList.add("error");
+  else lengthErrorEl.classList.remove("error");
+
+  if ([...checkBoxInputEl].some(box => box.checked))
+    optionErrorEl.classList.remove("error");
+  else optionErrorEl.classList.add("error");
+}
