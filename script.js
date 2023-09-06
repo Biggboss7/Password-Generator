@@ -22,7 +22,6 @@ function checkError() {
   if (rangeInput.value !== "0" && [...checkBoxInputEl].some(box => box.checked))
     return false;
   else {
-    errorMessage();
     return true;
   }
 }
@@ -36,3 +35,10 @@ function errorMessage() {
     optionErrorEl.classList.remove("error");
   else optionErrorEl.classList.add("error");
 }
+
+generateBtnEl.addEventListener("click", function () {
+  if (!checkError) {
+  } else {
+    errorMessage();
+  }
+});
