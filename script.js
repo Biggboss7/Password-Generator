@@ -17,17 +17,12 @@ function inputRangeProgress() {
 }
 rangeInput.addEventListener("input", inputRangeProgress);
 
-// Form Validation
+// Check for errors
 function checkError() {
   if (rangeInput.value !== "0" && [...checkBoxInputEl].some(box => box.checked))
     return false;
   else {
-    if (rangeInput.value === "0") lengthErrorEl.classList.add("error");
-    else lengthErrorEl.classList.remove("error");
-
-    if ([...checkBoxInputEl].some(box => box.checked))
-      optionErrorEl.classList.remove("error");
-    else optionErrorEl.classList.add("error");
+    errorMessage();
     return true;
   }
 }
