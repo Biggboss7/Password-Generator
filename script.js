@@ -15,7 +15,12 @@ function inputRangeProgress() {
   }%, #18171F ${(rangeInput.value / 20) * 100}%)`;
   passwordLengthEl.textContent = rangeInput.value;
 }
-rangeInput.addEventListener("input", inputRangeProgress);
+rangeInput.addEventListener("input", function () {
+  inputRangeProgress();
+  if (!checkError()) {
+    console.log("Success!");
+  }
+});
 
 // Check for errors
 function checkError() {
