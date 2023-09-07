@@ -58,8 +58,15 @@ function errorMessage() {
 }
 
 // Check Expected Pattern
-function checkExpectedPattern() {
-  return [...checkBoxInputEl].filter(box => box.checked).map(box => box.id);
+function userExpectedPattern() {
+  let result = "";
+  const checkedBoxes = [...checkBoxInputEl]
+    .filter(box => box.checked)
+    .map(box => box.id);
+  for (const box of checkedBoxes) {
+    result += patterns[box];
+  }
+  return result;
 }
 
 // Generate random password
