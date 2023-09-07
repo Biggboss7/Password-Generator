@@ -18,10 +18,6 @@ const patterns = {
   symbol: "\\W",
 };
 
-let expectedPattern = [];
-
-// let expectedPattern = RegExp(`[${symbolPattern + upperPattern + lowerPattern}]`, "g");
-
 let strengthPoints = 0;
 
 // Showing Length of Password
@@ -80,7 +76,7 @@ function generatePassword(numOfChars) {
 console.log(generatePassword(9));
 
 generateBtnEl.addEventListener("click", function () {
-  if (!checkError) {
+  if (!checkError()) {
   } else {
     errorMessage();
   }
