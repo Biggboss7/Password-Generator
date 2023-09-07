@@ -6,6 +6,22 @@ const lengthErrorEl = document.querySelector(".length--error");
 const optionErrorEl = document.querySelector(".option--error");
 const checkBoxInputEl = document.querySelectorAll("input[type='checkbox']");
 
+// Charset
+const chars =
+  "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890~`!@#$%^&*()_-+={[}]|:;\"'<,>.?/";
+
+// Set of Patterns
+const patterns = {
+  uppercase: "A-Z",
+  lowercase: "a-z",
+  number: "0-9",
+  symbol: "\\W",
+};
+
+let expectedPattern = [];
+
+// let expectedPattern = RegExp(`[${symbolPattern + upperPattern + lowerPattern}]`, "g");
+
 let strengthPoints = 0;
 
 // Showing Length of Password
@@ -44,6 +60,19 @@ function errorMessage() {
     optionErrorEl.classList.remove("error");
   else optionErrorEl.classList.add("error");
 }
+
+// Generate random password
+function generatePassword(numOfChars) {
+  const chosenSetOfChars = chars.match(pattern);
+  let pWord = "";
+  for (let i = 0; i < numOfChars; i++) {
+    pWord +=
+      chosenSetOfChars[Math.floor(Math.random() * chosenSetOfChars.length)];
+  }
+  return pWord;
+}
+
+console.log(generatePassword(9));
 
 generateBtnEl.addEventListener("click", function () {
   if (!checkError) {
