@@ -15,16 +15,20 @@ function inputRangeProgress() {
   }%, #18171F ${(rangeInput.value / 20) * 100}%)`;
   passwordLengthEl.textContent = rangeInput.value;
 }
+
 rangeInput.addEventListener("input", function () {
   inputRangeProgress();
   if (!checkError()) {
-    console.log("Success!");
   }
 });
 
 // Check for errors
+// Still can be refactor
 function checkError() {
-  if (rangeInput.value !== "0" && [...checkBoxInputEl].some(box => box.checked))
+  if (
+    rangeInput.valueAsNumber >= 8 &&
+    [...checkBoxInputEl].some(box => box.checked)
+  )
     return false;
   else {
     return true;
@@ -33,7 +37,7 @@ function checkError() {
 
 // Error Message Handling
 function errorMessage() {
-  if (rangeInput.value === "0") lengthErrorEl.classList.add("error");
+  if (rangeInput.valueAsNumber < 8) lengthErrorEl.classList.add("error");
   else lengthErrorEl.classList.remove("error");
 
   if ([...checkBoxInputEl].some(box => box.checked))
