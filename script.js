@@ -69,19 +69,6 @@ function userExpectedPattern() {
   return result;
 }
 
-// Generate random password
-function generatePassword(numOfChars) {
-  const chosenSetOfChars = chars.match(pattern);
-  let pWord = "";
-  for (let i = 0; i < numOfChars; i++) {
-    pWord +=
-      chosenSetOfChars[Math.floor(Math.random() * chosenSetOfChars.length)];
-  }
-  return pWord;
-}
-
-console.log(generatePassword(9));
-
 generateBtnEl.addEventListener("click", function () {
   if (!checkError()) {
   } else {
