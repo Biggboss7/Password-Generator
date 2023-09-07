@@ -61,6 +61,11 @@ function errorMessage() {
   else optionErrorEl.classList.add("error");
 }
 
+// Check Expected Pattern
+function checkExpectedPattern() {
+  return [...checkBoxInputEl].filter(box => box.checked).map(box => box.id);
+}
+
 // Generate random password
 function generatePassword(numOfChars) {
   const chosenSetOfChars = chars.match(pattern);
