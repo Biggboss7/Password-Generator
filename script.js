@@ -61,22 +61,29 @@ function errorMessage() {
 // Check Expected Pattern
 function userExpectedPattern() {
   let result = "";
+  let patternToCheck = "";
   const checkedBoxes = [...checkBoxInputEl]
     .filter(box => box.checked)
     .map(box => box.id);
   for (const box of checkedBoxes) {
     result += patterns[box];
+    patternToCheck += `(?=.*[${patterns[box]}])`;
   }
-  return result;
+  return [result, `^${patternToCheck}[${result}]+$`];
 }
 
 // Generate Password Function
 function generatePassword(patterns, passLength) {
-  const expectedPatterns = RegExp(`[${patterns}]`, "g");
+  const [expectedPatternInStr, checkPatternInStr] = patterns();
+  const expectedPatterns = RegExp(`[${expectedPatternInStr}]`, "g");
   const setOfChars = chars.match(expectedPatterns);
+  const checkPattern = RegExp(`${checkPatternInStr}`, "g");
   let pWord = "";
-  for (let i = 0; i < Number(passLength); i++) {
-    pWord += setOfChars[Math.floor(Math.random() * setOfChars.length)];
+  while (!checkPattern.test(pWord)) {
+    pWord = "";
+    for (let i = 0; i < Number(passLength); i++) {
+      pWord += setOfChars[Math.floor(Math.random() * setOfChars.length)];
+    }
   }
   return pWord;
 }
@@ -84,7 +91,7 @@ function generatePassword(patterns, passLength) {
 generateBtnEl.addEventListener("click", function () {
   if (!checkError()) {
     generatedPasswordEl.textContent = generatePassword(
-      userExpectedPattern(),
+      userExpectedPattern,
       passwordLengthEl.textContent
     );
     generatedPasswordEl.classList.remove("text--disabled");
