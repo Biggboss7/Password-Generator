@@ -5,6 +5,7 @@ const generateBtnEl = document.getElementById("btn--generateEl");
 const lengthErrorEl = document.querySelector(".length--error");
 const optionErrorEl = document.querySelector(".option--error");
 const checkBoxInputEl = document.querySelectorAll("input[type='checkbox']");
+const generatedPasswordEl = document.getElementById("col-passwordEl");
 
 // Charset
 const chars =
@@ -69,9 +70,24 @@ function userExpectedPattern() {
   return result;
 }
 
+// Generate Password Function
+function generatePassword(patterns, passLength) {
+  const expectedPatterns = RegExp(`[${patterns}]`, "g");
+  const setOfChars = chars.match(expectedPatterns);
+  let pWord = "";
+  for (let i = 0; i < Number(passLength); i++) {
+    pWord += setOfChars[Math.floor(Math.random() * setOfChars.length)];
+  }
+  return pWord;
+}
+
 generateBtnEl.addEventListener("click", function () {
   if (!checkError()) {
-  } else {
-    errorMessage();
+    generatedPasswordEl.textContent = generatePassword(
+      userExpectedPattern(),
+      passwordLengthEl.textContent
+    );
+    generatedPasswordEl.classList.remove("text--disabled");
   }
+  errorMessage();
 });
