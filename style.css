@@ -143,11 +143,20 @@ main {
   font-size: var(--fs-large);
 }
 
+.copy--message {
+  font-size: var(--fs-medium);
+  color: var(--green-pale);
+  margin-right: 0.6rem;
+}
+
 /* Button Styling */
 .button--copy {
+  display: flex;
+  align-items: center;
   position: absolute;
   right: 35px;
   bottom: 37px;
+  cursor: pointer;
 }
 
 .icon--arrow {

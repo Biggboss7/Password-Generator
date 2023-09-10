@@ -6,6 +6,8 @@ const lengthErrorEl = document.querySelector(".length--error");
 const optionErrorEl = document.querySelector(".option--error");
 const checkBoxInputEl = document.querySelectorAll("input[type='checkbox']");
 const generatedPasswordEl = document.getElementById("col-passwordEl");
+const copyBtnEl = document.getElementById("btn--copyEl");
+const coptStatusEl = document.getElementById("col-copyStatusEl");
 
 // Charset
 const chars =
@@ -88,6 +90,18 @@ function generatePassword(patterns, passLength) {
   return pWord;
 }
 
+// Function to copy text
+function copyText() {
+  navigator.clipboard.writeText(generatedPasswordEl.textContent);
+}
+
+copyBtnEl.addEventListener("click", function () {
+  if (!checkError()) {
+    copyText();
+    coptStatusEl.textContent = "Copied";
+  }
+});
+
 generateBtnEl.addEventListener("click", function () {
   if (!checkError()) {
     generatedPasswordEl.textContent = generatePassword(
@@ -95,6 +109,7 @@ generateBtnEl.addEventListener("click", function () {
       passwordLengthEl.textContent
     );
     generatedPasswordEl.classList.remove("text--disabled");
+    coptStatusEl.textContent = "";
   }
   errorMessage();
 });
