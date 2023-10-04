@@ -8,6 +8,11 @@ const checkBoxInputEl = document.querySelectorAll("input[type='checkbox']");
 const generatedPasswordEl = document.getElementById("col-passwordEl");
 const copyBtnEl = document.getElementById("btn--copyEl");
 const coptStatusEl = document.getElementById("col-copyStatusEl");
+const passwordStrengthStatusEl = document.getElementById(
+  "col-strengthStatusEl"
+);
+const barEl = document.querySelectorAll(".bar");
+let barColor = "";
 
 // Charset
 const chars =
@@ -22,6 +27,38 @@ const patterns = {
 };
 
 let strengthPoints = 0;
+
+// checkboxes event listener
+for (const box of checkBoxInputEl) {
+  box.addEventListener("click", function () {
+    strengthPoints = [...checkBoxInputEl].filter(box => box.checked).length;
+    switch (strengthPoints) {
+      case 1:
+        passwordStrengthStatusEl.textContent = "too weak!";
+        barColor = "#F64A4A";
+        break;
+      case 2:
+        passwordStrengthStatusEl.textContent = "weak";
+        barColor = "#FB7C58";
+        break;
+      case 3:
+        passwordStrengthStatusEl.textContent = "medium";
+        barColor = "#F8CD65";
+        break;
+      case 4:
+        passwordStrengthStatusEl.textContent = "strong";
+        barColor = "#A4FFAF";
+        break;
+      default:
+        passwordStrengthStatusEl.textContent = "";
+        break;
+    }
+    for (let i = 0; i < 4; i++) {
+      if (i < strengthPoints) barEl[i].style.backgroundColor = barColor;
+      else barEl[i].style.backgroundColor = "#24232C";
+    }
+  });
+}
 
 // Showing Length of Password
 function inputRangeProgress() {
