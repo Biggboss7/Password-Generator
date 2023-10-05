@@ -144,7 +144,7 @@ main {
 }
 
 .copy--message {
-  font-size: var(--fs-medium);
+  font-size: var(--fs-normal);
   color: var(--green-pale);
   margin-right: 0.6rem;
 }
@@ -154,8 +154,8 @@ main {
   display: flex;
   align-items: center;
   position: absolute;
-  right: 35px;
-  bottom: 37px;
+  right: 22px;
+  bottom: 42px;
   cursor: pointer;
 }
 
@@ -260,4 +260,66 @@ input[type="checkbox"]:checked {
   background-repeat: no-repeat;
   background-position: center;
   background-color: var(--green-pale);
+}
+
+@media only screen and (max-width: 550px) {
+  .main--container {
+    width: 100%;
+  }
+  .generated--password {
+    font-size: var(--fs-normal);
+  }
+
+  .button--copy {
+    right: 22px;
+    bottom: 32px;
+  }
+
+  .password--length {
+    top: 26px;
+    right: 36px;
+    font-size: var(--fs-medium);
+  }
+
+  .status {
+    font-size: var(--fs-normal);
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .main--container {
+    padding: 1rem;
+  }
+
+  body {
+    padding: 1rem;
+  }
+
+  .button--copy {
+    right: 8px;
+    bottom: 16px;
+  }
+
+  input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+  }
+
+  .password--length {
+    top: 12px;
+    right: 15px;
+  }
+
+  .length--error,
+  .option--error {
+    left: 56px;
+  }
+
+  .length--error {
+    top: 89px;
+  }
+
+  .option--error {
+    bottom: 94px;
+  }
 }
